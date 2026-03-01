@@ -1,0 +1,11 @@
+197 
+select t1.id from weather  t1 join Weather t2 on  t1.id = t2.id+1 and t1.temperature > t2.temperature;
+
+175
+select p.firstName,p.lastName,a.city,a.state from person p left join address a on p.personid = a.personid;
+
+511
+select player_id, min(event_date) as first_login from Activity group by player_id;
+    
+577
+select e.name, b.bonus from Employee e left join Bonus b on e.empId = b.empId where b.bonus < 1000 or b.bonus is null;
