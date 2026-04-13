@@ -64,4 +64,3 @@ select l.name as Lesername, count(a.buch_id) as anzahlbuecher from ausleihe a jo
 create view aktuelle_ausleihen as
 select l.name as Lesername, b.titel as Buchtitel, a.ausleih_datum from ausleihe a join leser l on a.leser_id = l.id join buch b on a.buch_id = b.id where a.rueckgabe_datum IS NULL;
 
- reference lib = dom für dei SWP hü einfach opencode fragen 
