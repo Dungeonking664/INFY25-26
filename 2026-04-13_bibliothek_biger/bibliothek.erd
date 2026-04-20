@@ -1,0 +1,37 @@
+erdiagram Bibliothek 
+notation=default
+
+
+entity Leser {
+    id: int key
+    name: text
+    email: text
+    mitglied_seit: text
+
+    
+}
+
+entity Buch {
+    id: int key
+    titel: text
+    autor: text
+    isbn: text
+    erscheinungsjahr: int
+
+    
+}
+
+entity Ausleihe {
+    id: int key
+    leser_id: int
+    buch_id: int
+    ausleihdatum: text
+    rueckgabedatum: text
+    anzahl_tag: int
+
+
+}
+
+relationship relationship1 {
+Leser  -> Ausleihe
+}
