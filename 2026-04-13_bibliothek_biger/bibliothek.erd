@@ -1,14 +1,11 @@
 erdiagram Bibliothek 
 notation=default
 
-
 entity Leser {
     id: int key
     name: text
     email: text
     mitglied_seit: text
-
-    
 }
 
 entity Buch {
@@ -17,21 +14,44 @@ entity Buch {
     autor: text
     isbn: text
     erscheinungsjahr: int
-
-    
 }
 
 entity Ausleihe {
-    id: int key
-    leser_id: int
-    buch_id: int
+    leser_id :text key
+    buch_id: text key
+    mitarbeiter_id 
     ausleihdatum: text
     rueckgabedatum: text
     anzahl_tag: int
-
-
 }
 
-relationship relationship1 {
-Leser  -> Ausleihe
+entity Mitarbeiter {
+    id: int key
+    name: text
+    position: text
+    salary: int
 }
+
+entity Exemplare{
+    buch_id: int key
+    anzahl: int
+}
+
+relationship rel_leser_ausleihe {
+    Leser [1]-> Ausleihe [1..N]
+}
+
+relationship rel_buch_ausleihe {
+    Exemplare[1]-> Ausleihe [1..N]
+   
+}
+
+relationship rel_mitarbeiter_ausleihe {
+    Mitarbeiter [1]-> Ausleihe [1..N]
+}
+
+relationship rel_buch_exemplare {
+    Buch [1]-> Exemplare [1..N]
+}
+
+
