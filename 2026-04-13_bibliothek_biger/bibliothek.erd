@@ -1,57 +1,46 @@
 erdiagram Bibliothek 
-notation=default
+notation=crowsfoot
 
 entity Leser {
-    id: int key
-    name: text
-    email: text
-    mitglied_seit: text
+    id key
+    name
+    email
+    mitglied_seit
 }
 
 entity Buch {
-    id: int key
-    titel: text
-    autor: text
-    isbn: text
-    erscheinungsjahr: int
-}
-
-entity Ausleihe {
-    leser_id :text key
-    buch_id: text key
-    mitarbeiter_id 
-    ausleihdatum: text
-    rueckgabedatum: text
-    anzahl_tag: int
+    id key
+    titel
+    autor
+    isbn
+    erscheinungsjahr
 }
 
 entity Mitarbeiter {
-    id: int key
-    name: text
-    position: text
-    salary: int
+    id key
+    name
+    position
+    salary
 }
 
 entity Exemplare{
-    buch_id: int key
-    anzahl: int
-}
-
-relationship rel_leser_ausleihe {
-    Leser [1]-> Ausleihe [1..N]
-}
-
-relationship rel_buch_ausleihe {
-    Exemplare[1]-> Ausleihe [1..N]
-   
-}
-
-relationship rel_mitarbeiter_ausleihe {
-    Mitarbeiter [1]-> Ausleihe [1..N]
-}
-
-relationship rel_buch_exemplare {
-    Buch [1]-> Exemplare [1..N]
+    buch_id key
+    pysische Exemplare
+    Buchid 
+    standort 
+    Status
 }
 
 
+relationship ausleihe {
+    Leser[N] -> Exemplare[N] -> Mitarbeiter[N]
+    mitarbeiter_id
+    ausleihdatum
+    rueckgabedatum
+    anzahl_tage
+
+}
+
+relationship hat {
+    Buch[1] -> Exemplare[N]
+}
