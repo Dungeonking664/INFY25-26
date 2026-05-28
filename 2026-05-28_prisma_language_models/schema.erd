@@ -1,0 +1,62 @@
+erdiagram LLM_Translation_System
+notation=crowsfoot
+
+entity LlmModel {
+    id key
+    name
+    createdAt
+}
+
+entity Language {
+    id key
+    bcp47Code
+    posixCode
+    iso639_3Code
+    directoryName
+    englishName
+    whisperCode
+    createdAt
+}
+
+entity SourceText {
+    id key
+    englishText
+    createdAt
+}
+
+entity LanguageProficiency {
+    id key
+    llmModelId
+    languageId
+    proficiencyLevel
+    createdAt
+}
+
+entity Vote {
+    id key
+    llmModelId
+    sourceTextId
+    languageId
+    translatedText
+    submittedAt
+}
+
+relationship hat_proficiencies {
+    LlmModel[1] -> LanguageProficiency[N]
+}
+
+relationship bewertet {
+    Language[1] -> LanguageProficiency[N]
+}
+
+relationship erstellt {
+    LlmModel[1] -> Vote[N]
+}
+
+relationship hat_votes {
+    Language[1] -> Vote[N]
+}
+
+relationship wird_uebersetzt {
+    SourceText[1] -> Vote[N]
+}
